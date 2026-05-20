@@ -1,0 +1,1571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sekander Security Group | Elite Protection Services — DC Metro</title>
+  <meta name="description" content="Veteran-owned security firm serving the DC Metro area. Residential, commercial, event security, executive protection & consulting. Led by Adeeb Sekander, CPP." />
+  <style>
+    /* ===================== RESET & VARIABLES ===================== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --navy:        #080c18;
+      --navy-mid:    #0f1626;
+      --navy-light:  #182035;
+      --charcoal:    #1e2738;
+      --gold:        #c8a84b;
+      --gold-light:  #e5cc7a;
+      --gold-dark:   #9d7d2e;
+      --red:         #b83228;
+      --red-light:   #e04435;
+      --white:       #ffffff;
+      --off-white:   #f5f6f8;
+      --gray:        #8b95a8;
+      --gray-light:  #c8cfd8;
+      --text:        #dde2ec;
+      --border:      rgba(200, 168, 75, 0.15);
+      --border-h:    rgba(200, 168, 75, 0.35);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--navy);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ===================== UTILITY ===================== */
+    .container { max-width: 1200px; margin: 0 auto; }
+
+    .section-label {
+      display: inline-block;
+      color: var(--gold);
+      font-size: 0.72rem;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 0.9rem;
+    }
+
+    .divider {
+      width: 52px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      border-radius: 2px;
+      margin-bottom: 1.4rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.85rem, 4vw, 2.9rem);
+      font-weight: 800;
+      line-height: 1.18;
+      margin-bottom: 1.1rem;
+      color: var(--white);
+    }
+
+    .section-desc {
+      color: var(--gray);
+      font-size: 1.02rem;
+      max-width: 560px;
+      line-height: 1.85;
+      margin-bottom: 3.5rem;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+      color: var(--navy);
+      padding: 14px 32px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.97rem;
+      letter-spacing: 0.2px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 26px rgba(200, 168, 75, 0.42);
+    }
+
+    .btn-ghost {
+      display: inline-block;
+      background: transparent;
+      color: var(--white);
+      padding: 14px 32px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.97rem;
+      border: 1px solid rgba(255,255,255,0.18);
+      transition: border-color 0.25s ease, color 0.25s ease;
+    }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse {
+      0%,100% { opacity:1; } 50% { opacity:0.35; }
+    }
+    @keyframes float {
+      0%,100% { transform: translateY(-50%) rotate(0deg); }
+      50%     { transform: translateY(-53%) rotate(2deg); }
+    }
+
+    /* ===================== NAVIGATION ===================== */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 9000;
+      height: 70px;
+      background: rgba(8, 12, 24, 0.93);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow 0.3s ease;
+    }
+    #navbar.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.6); }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      text-decoration: none;
+    }
+    .logo-shield {
+      width: 42px; height: 42px;
+      background: linear-gradient(145deg, var(--gold) 0%, var(--gold-dark) 100%);
+      border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.35rem; font-weight: 900;
+      color: var(--navy);
+      letter-spacing: -1px;
+      flex-shrink: 0;
+    }
+    .logo-text-wrap { display: flex; flex-direction: column; line-height: 1; }
+    .logo-name { font-size: 1.08rem; font-weight: 700; color: var(--white); }
+    .logo-sub  { font-size: 0.62rem; color: var(--gold); letter-spacing: 2.2px; text-transform: uppercase; margin-top: 3px; }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      align-items: center;
+      gap: 2.1rem;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--gray-light);
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      transition: color 0.25s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px; left: 0;
+      width: 0; height: 2px;
+      background: var(--gold);
+      transition: width 0.3s ease;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+
+    .nav-cta-link {
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark)) !important;
+      color: var(--navy) !important;
+      padding: 9px 22px;
+      border-radius: 7px;
+      font-weight: 700 !important;
+      letter-spacing: 0.2px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+    }
+    .nav-cta-link::after { display: none !important; }
+    .nav-cta-link:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 5px 18px rgba(200,168,75,0.38) !important;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--gold);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+
+    /* ===================== HERO ===================== */
+    #home {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 80% at 15% 55%, rgba(200,168,75,0.055) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 60% at 85% 15%, rgba(184,50,40,0.035) 0%, transparent 60%),
+        linear-gradient(155deg, var(--navy) 0%, #0b1220 55%, var(--navy-mid) 100%);
+    }
+
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(200,168,75,0.032) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200,168,75,0.032) 1px, transparent 1px);
+      background-size: 52px 52px;
+    }
+
+    .hero-emblem {
+      position: absolute;
+      right: 6%;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 20rem;
+      opacity: 0.055;
+      user-select: none;
+      pointer-events: none;
+      animation: float 8s ease-in-out infinite;
+    }
+
+    .hero-line {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0.35;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      padding-top: 70px;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      background: rgba(200,168,75,0.09);
+      border: 1px solid rgba(200,168,75,0.28);
+      padding: 7px 18px;
+      border-radius: 100px;
+      font-size: 0.77rem;
+      color: var(--gold);
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 1.6rem;
+      animation: fadeInUp 0.6s ease both;
+    }
+    .pill-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+      animation: pulse 2.2s infinite;
+    }
+
+    .hero-title {
+      font-size: clamp(2.6rem, 6.5vw, 4.8rem);
+      font-weight: 800;
+      line-height: 1.08;
+      margin-bottom: 1.5rem;
+      max-width: 720px;
+      animation: fadeInUp 0.6s 0.1s ease both;
+    }
+    .hero-title .gold  { color: var(--gold); }
+    .hero-title .red   { color: var(--red-light); }
+
+    .hero-desc {
+      font-size: 1.12rem;
+      color: var(--gray);
+      max-width: 560px;
+      line-height: 1.85;
+      margin-bottom: 2.5rem;
+      animation: fadeInUp 0.6s 0.2s ease both;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 4.5rem;
+      animation: fadeInUp 0.6s 0.3s ease both;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 3.5rem;
+      flex-wrap: wrap;
+      animation: fadeInUp 0.6s 0.42s ease both;
+    }
+    .stat-num   { font-size: 2.15rem; font-weight: 800; color: var(--gold); line-height: 1; }
+    .stat-label { font-size: 0.76rem; color: var(--gray); text-transform: uppercase; letter-spacing: 1.2px; margin-top: 5px; }
+
+    /* ===================== TRUST BAR ===================== */
+    .trust-bar {
+      background: var(--navy-mid);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 1.4rem 2rem;
+    }
+    .trust-bar-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--gray);
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+    .trust-ico { font-size: 1.1rem; color: var(--gold); }
+
+    /* ===================== SERVICES ===================== */
+    #services {
+      padding: 6.5rem 2rem;
+      background: var(--navy-mid);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+      gap: 1.4rem;
+    }
+
+    .srv-card {
+      background: var(--navy-light);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .srv-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-dark));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s ease;
+    }
+    .srv-card:hover { transform: translateY(-5px); border-color: var(--border-h); box-shadow: 0 18px 44px rgba(0,0,0,0.45); }
+    .srv-card:hover::before { transform: scaleX(1); }
+
+    .srv-ico {
+      width: 56px; height: 56px;
+      background: rgba(200,168,75,0.1);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.55rem;
+      margin-bottom: 1.4rem;
+      transition: background 0.3s ease;
+    }
+    .srv-card:hover .srv-ico { background: rgba(200,168,75,0.2); }
+
+    .srv-title { font-size: 1.18rem; font-weight: 700; color: var(--white); margin-bottom: 0.75rem; }
+
+    .srv-desc { color: var(--gray); font-size: 0.88rem; line-height: 1.72; margin-bottom: 1.2rem; }
+
+    .srv-list { list-style: none; display: flex; flex-direction: column; gap: 0.42rem; }
+    .srv-list li {
+      font-size: 0.83rem;
+      color: var(--gray-light);
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+    .srv-list li::before { content: '✓'; color: var(--gold); font-weight: 700; font-size: 0.78rem; }
+
+    /* ===================== ABOUT ===================== */
+    #about {
+      padding: 7rem 2rem;
+      background: var(--navy);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 5fr 7fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-visual { position: relative; }
+
+    .about-portrait {
+      width: 100%;
+      aspect-ratio: 4/5;
+      background: linear-gradient(145deg, var(--navy-light) 0%, var(--charcoal) 100%);
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .portrait-bg-icon {
+      font-size: 10rem;
+      opacity: 0.1;
+      user-select: none;
+      pointer-events: none;
+    }
+    .portrait-overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(8,12,24,0.92));
+      padding: 1.8rem 1.5rem;
+    }
+    .port-badge {
+      display: inline-block;
+      background: rgba(200,168,75,0.12);
+      border: 1px solid rgba(200,168,75,0.3);
+      border-radius: 5px;
+      padding: 5px 11px;
+      font-size: 0.72rem;
+      color: var(--gold);
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-right: 6px;
+      margin-bottom: 5px;
+    }
+
+    .about-float-card {
+      position: absolute;
+      bottom: -22px; right: -22px;
+      background: var(--navy-light);
+      border: 1px solid var(--border-h);
+      border-radius: 12px;
+      padding: 1.1rem 1.6rem;
+      text-align: center;
+      box-shadow: 0 10px 32px rgba(0,0,0,0.5);
+    }
+    .float-num   { font-size: 2rem; font-weight: 800; color: var(--gold); line-height: 1; }
+    .float-label { font-size: 0.7rem; color: var(--gray); text-transform: uppercase; letter-spacing: 1.3px; margin-top: 3px; }
+
+    .about-bio {
+      color: var(--gray);
+      line-height: 1.85;
+      margin-bottom: 1.4rem;
+      font-size: 0.97rem;
+    }
+
+    .quote {
+      border-left: 3px solid var(--gold);
+      padding-left: 1.3rem;
+      color: var(--gray-light);
+      font-style: italic;
+      font-size: 1rem;
+      line-height: 1.7;
+      margin: 1.8rem 0;
+    }
+    .quote strong { color: var(--gold); font-style: normal; }
+
+    .creds-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.9rem;
+      margin-top: 2.2rem;
+    }
+    .cred-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+      background: var(--navy-light);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem;
+    }
+    .cred-ico   { font-size: 1.2rem; color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+    .cred-title { font-size: 0.84rem; font-weight: 600; color: var(--white); margin-bottom: 2px; }
+    .cred-sub   { font-size: 0.73rem; color: var(--gray); }
+
+    /* ===================== CERTIFICATIONS ===================== */
+    .certs-strip {
+      background: var(--navy);
+      padding: 3.5rem 2rem;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .certs-heading {
+      text-align: center;
+      color: var(--gray);
+      font-size: 0.75rem;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 2rem;
+    }
+    .certs-row {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      justify-content: center;
+    }
+    .cert-tag {
+      background: var(--navy-light);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.7rem 1.3rem;
+      display: flex; align-items: center; gap: 8px;
+      font-size: 0.79rem;
+      color: var(--gray-light);
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      transition: border-color 0.25s, color 0.25s;
+      cursor: default;
+    }
+    .cert-tag:hover { border-color: var(--gold); color: var(--gold-light); }
+    .cert-tag-ico { font-size: 1rem; }
+
+    /* ===================== TESTIMONIALS ===================== */
+    #testimonials {
+      padding: 7rem 2rem;
+      background: var(--navy-mid);
+    }
+
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.4rem;
+    }
+
+    .testi-card {
+      background: var(--navy-light);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .testi-card:hover { transform: translateY(-4px); box-shadow: 0 14px 38px rgba(0,0,0,0.4); }
+
+    .stars { color: var(--gold); letter-spacing: 3px; font-size: 0.95rem; margin-bottom: 1.1rem; }
+
+    .testi-text {
+      color: var(--gray-light);
+      font-size: 0.92rem;
+      line-height: 1.82;
+      font-style: italic;
+      margin-bottom: 1.6rem;
+    }
+
+    .testi-author { display: flex; align-items: center; gap: 12px; }
+    .author-av {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-dark), var(--charcoal));
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700;
+      color: var(--gold-light);
+      font-size: 0.88rem;
+      flex-shrink: 0;
+    }
+    .author-name { font-size: 0.88rem; font-weight: 600; color: var(--white); }
+    .author-role { font-size: 0.74rem; color: var(--gray); margin-top: 1px; }
+
+    /* ===================== CONTACT ===================== */
+    #contact {
+      padding: 7rem 2rem;
+      background: var(--navy);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 4fr 6fr;
+      gap: 4.5rem;
+      align-items: start;
+    }
+
+    .contact-blurb { color: var(--gray); font-size: 0.92rem; line-height: 1.78; margin-bottom: 2.5rem; }
+
+    .contact-details { display: flex; flex-direction: column; gap: 1.3rem; }
+
+    .c-detail { display: flex; align-items: flex-start; gap: 14px; }
+    .c-ico {
+      width: 42px; height: 42px; flex-shrink: 0;
+      background: rgba(200,168,75,0.09);
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.05rem;
+    }
+    .c-label { font-size: 0.72rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1.8px; font-weight: 700; margin-bottom: 3px; }
+    .c-value { font-size: 0.88rem; color: var(--gray-light); line-height: 1.55; }
+
+    /* form */
+    .contact-form-wrap {
+      background: var(--navy-light);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.6rem;
+    }
+    .form-title    { font-size: 1.3rem; font-weight: 700; color: var(--white); margin-bottom: 0.35rem; }
+    .form-subtitle { color: var(--gray); font-size: 0.84rem; margin-bottom: 2rem; line-height: 1.55; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 1.15rem; }
+    .form-group label { font-size: 0.78rem; font-weight: 600; color: var(--gray-light); letter-spacing: 0.4px; }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      background: rgba(8,12,24,0.65);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 12px 15px;
+      color: var(--white);
+      font-size: 0.9rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(200,168,75,0.1);
+    }
+    .form-group textarea { resize: vertical; min-height: 118px; }
+    .form-group select option { background: var(--navy-mid); }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: var(--gray); opacity: 0.7; }
+
+    .form-submit {
+      width: 100%;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+      color: var(--navy);
+      border: none;
+      padding: 14px;
+      border-radius: 8px;
+      font-size: 0.97rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      letter-spacing: 0.3px;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .form-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 26px rgba(200,168,75,0.42); }
+
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 2.5rem 1rem;
+    }
+    .form-success-ico { font-size: 3rem; margin-bottom: 1rem; }
+    .form-success h3  { font-size: 1.3rem; font-weight: 700; color: var(--gold); margin-bottom: 0.6rem; }
+    .form-success p   { color: var(--gray); font-size: 0.9rem; line-height: 1.65; }
+
+    /* ===================== FOOTER ===================== */
+    footer {
+      background: var(--navy-mid);
+      border-top: 1px solid var(--border);
+      padding: 4.5rem 2rem 2rem;
+    }
+
+    .footer-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.7fr 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-bio { color: var(--gray); font-size: 0.84rem; line-height: 1.72; margin: 1rem 0 1.5rem; }
+
+    .socials { display: flex; gap: 0.75rem; }
+    .social-btn {
+      width: 38px; height: 38px;
+      border-radius: 8px;
+      background: var(--navy-light);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none;
+      color: var(--gray);
+      font-size: 0.82rem;
+      font-weight: 700;
+      transition: border-color 0.25s, color 0.25s, background 0.25s;
+    }
+    .social-btn:hover { border-color: var(--gold); color: var(--gold); background: rgba(200,168,75,0.1); }
+
+    .footer-col h4 {
+      font-size: 0.8rem; font-weight: 700;
+      color: var(--white); text-transform: uppercase;
+      letter-spacing: 1.8px; margin-bottom: 1.2rem;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+    .footer-col ul li a {
+      text-decoration: none;
+      color: var(--gray);
+      font-size: 0.84rem;
+      transition: color 0.25s;
+    }
+    .footer-col ul li a:hover { color: var(--gold); }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-bottom p { color: var(--gray); font-size: 0.78rem; }
+    .footer-btm-links { display: flex; gap: 1.5rem; }
+    .footer-btm-links a { color: var(--gray); text-decoration: none; font-size: 0.78rem; transition: color 0.25s; }
+    .footer-btm-links a:hover { color: var(--gold); }
+
+    /* ===================== RESPONSIVE ===================== */
+    @media (max-width: 900px) {
+      .about-grid   { grid-template-columns: 1fr; }
+      .about-visual { display: none; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+
+      .nav-links {
+        position: fixed;
+        top: 70px; left: 0; right: 0;
+        background: rgba(8,12,24,0.98);
+        backdrop-filter: blur(14px);
+        flex-direction: column;
+        gap: 0;
+        padding: 0.5rem 0 1.2rem;
+        border-bottom: 1px solid var(--border);
+        transform: translateY(-110%);
+        opacity: 0;
+        pointer-events: none;
+        transition: transform 0.35s ease, opacity 0.35s ease;
+      }
+      .nav-links.open { transform: translateY(0); opacity: 1; pointer-events: all; }
+      .nav-links li { border-bottom: 1px solid rgba(255,255,255,0.04); }
+      .nav-links a { display: block; padding: 1rem 2rem; font-size: 1rem; }
+      .nav-links a::after { display: none; }
+      .nav-cta-link { margin: 0.8rem 2rem 0; display: block; text-align: center; }
+
+      .footer-grid   { grid-template-columns: 1fr 1fr; }
+      .hero-stats    { gap: 2rem; }
+      .form-row      { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 500px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .hero-btns { flex-direction: column; }
+      .btn-primary, .btn-ghost { text-align: center; }
+      .creds-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ====================================================== -->
+  <!-- NAVIGATION                                              -->
+  <!-- ====================================================== -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#home" class="nav-logo">
+        <div class="logo-shield">SSG</div>
+        <div class="logo-text-wrap">
+          <span class="logo-name">Sekander Security</span>
+          <span class="logo-sub">Protection You Can Trust</span>
+        </div>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home"         class="active">Home</a></li>
+        <li><a href="#services"              >Services</a></li>
+        <li><a href="#about"                 >About</a></li>
+        <li><a href="#testimonials"          >Reviews</a></li>
+        <li><a href="#contact" class="nav-cta-link">Free Consultation</a></li>
+      </ul>
+
+      <div class="hamburger" id="hamburger" aria-label="Toggle menu" role="button" tabindex="0">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ====================================================== -->
+  <!-- HERO                                                    -->
+  <!-- ====================================================== -->
+  <section id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-emblem">🛡</div>
+    <div class="hero-line"></div>
+
+    <div class="hero-content container">
+      <div class="hero-pill">
+        <span class="pill-dot"></span>
+        Licensed &amp; Insured &mdash; Serving DC, Maryland &amp; Virginia
+      </div>
+
+      <h1 class="hero-title">
+        Security You Can <span class="gold">Count On.</span><br>
+        Around the Clock, <span class="red">Every Day.</span>
+      </h1>
+
+      <p class="hero-desc">
+        Sekander Security Group delivers elite protection solutions for residential
+        properties, commercial facilities, and high-profile events. Led by Adeeb Sekander —
+        a U.S. Army veteran and ASIS Certified Protection Professional with over 18 years of
+        security and risk management experience.
+      </p>
+
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">Request Free Consultation</a>
+        <a href="#services" class="btn-ghost">Explore Our Services</a>
+      </div>
+
+      <div class="hero-stats" id="heroStats">
+        <div>
+          <div class="stat-num" data-target="18" data-suffix="+">18+</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div>
+          <div class="stat-num" data-target="500" data-suffix="+">500+</div>
+          <div class="stat-label">Clients Protected</div>
+        </div>
+        <div>
+          <div class="stat-num" data-target="0" data-suffix="">24/7</div>
+          <div class="stat-label">Availability</div>
+        </div>
+        <div>
+          <div class="stat-num" data-target="0" data-suffix="">0</div>
+          <div class="stat-label">Major Incidents</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================== -->
+  <!-- TRUST BAR                                               -->
+  <!-- ====================================================== -->
+  <div class="trust-bar">
+    <div class="trust-bar-inner">
+      <div class="trust-item"><span class="trust-ico">🎖</span> U.S. Army Veteran-Owned Business</div>
+      <div class="trust-item"><span class="trust-ico">🏛</span> Maryland &amp; Virginia Licensed</div>
+      <div class="trust-item"><span class="trust-ico">📋</span> ASIS Certified Protection Professional</div>
+      <div class="trust-item"><span class="trust-ico">🔒</span> $2M Liability Coverage</div>
+      <div class="trust-item"><span class="trust-ico">⭐</span> 5-Star Google Rated</div>
+    </div>
+  </div>
+
+  <!-- ====================================================== -->
+  <!-- SERVICES                                                -->
+  <!-- ====================================================== -->
+  <section id="services">
+    <div class="container">
+      <span class="section-label reveal">What We Offer</span>
+      <div class="divider reveal"></div>
+      <h2 class="section-title reveal">Comprehensive Security<br>Solutions</h2>
+      <p class="section-desc reveal">
+        From protecting your family at home to securing a 2,000-person gala, Sekander Security
+        Group tailors every engagement to your specific threat environment and operational needs.
+        No cookie-cutter packages — just real protection built around you.
+      </p>
+
+      <div class="services-grid">
+
+        <div class="srv-card reveal">
+          <div class="srv-ico">🏠</div>
+          <h3 class="srv-title">Residential Security</h3>
+          <p class="srv-desc">
+            Your home is your sanctuary. We provide discreet, professional protection
+            for high-value properties, private estates, and gated communities —
+            giving your family genuine peace of mind.
+          </p>
+          <ul class="srv-list">
+            <li>Armed &amp; unarmed guard patrols</li>
+            <li>Access control &amp; gatehouse management</li>
+            <li>Perimeter threat assessment</li>
+            <li>Emergency response planning</li>
+          </ul>
+        </div>
+
+        <div class="srv-card reveal">
+          <div class="srv-ico">🏢</div>
+          <h3 class="srv-title">Commercial Security</h3>
+          <p class="srv-desc">
+            Protect your assets, employees, and reputation. We deliver scalable security programs
+            for businesses of all sizes — from growing startups to multi-site enterprise
+            operations across the DC Metro corridor.
+          </p>
+          <ul class="srv-list">
+            <li>Lobby &amp; reception security officers</li>
+            <li>Loss prevention programs</li>
+            <li>Workplace violence prevention</li>
+            <li>After-hours roving patrols</li>
+          </ul>
+        </div>
+
+        <div class="srv-card reveal">
+          <div class="srv-ico">🎤</div>
+          <h3 class="srv-title">Event Security</h3>
+          <p class="srv-desc">
+            Large gatherings demand a layered, coordinated security approach. We manage
+            crowd dynamics, credentialing, access points, and emergency egress — so your
+            event runs flawlessly and your guests feel safe from arrival to departure.
+          </p>
+          <ul class="srv-list">
+            <li>VIP &amp; executive protection details</li>
+            <li>Crowd management &amp; control</li>
+            <li>Venue risk assessments</li>
+            <li>Law enforcement liaison services</li>
+          </ul>
+        </div>
+
+        <div class="srv-card reveal">
+          <div class="srv-ico">🔍</div>
+          <h3 class="srv-title">Security Consulting</h3>
+          <p class="srv-desc">
+            Leverage 18 years of field expertise to identify vulnerabilities and build a
+            proactive security strategy before threats materialize. Our consulting
+            engagements pay for themselves by preventing incidents that never happen.
+          </p>
+          <ul class="srv-list">
+            <li>Physical security audits</li>
+            <li>Risk &amp; vulnerability assessments</li>
+            <li>Security policy development</li>
+            <li>Staff security awareness training</li>
+          </ul>
+        </div>
+
+        <div class="srv-card reveal">
+          <div class="srv-ico">📷</div>
+          <h3 class="srv-title">Surveillance Systems</h3>
+          <p class="srv-desc">
+            Modern threats require modern technology. We design, install, and monitor
+            state-of-the-art CCTV and integrated surveillance systems — engineered
+            specifically around your property layout and blind spots.
+          </p>
+          <ul class="srv-list">
+            <li>HD IP camera installation &amp; configuration</li>
+            <li>Remote monitoring &amp; 24/7 video review</li>
+            <li>License plate recognition (LPR)</li>
+            <li>Encrypted cloud-based footage storage</li>
+          </ul>
+        </div>
+
+        <div class="srv-card reveal">
+          <div class="srv-ico">🚁</div>
+          <h3 class="srv-title">Executive Protection</h3>
+          <p class="srv-desc">
+            Discreet, professional close protection for executives, dignitaries, and
+            high-net-worth individuals. Our protectors are trained to blend seamlessly
+            into any environment while maintaining an unwavering security posture.
+          </p>
+          <ul class="srv-list">
+            <li>Advance team &amp; route reconnaissance</li>
+            <li>Secure ground transportation coordination</li>
+            <li>International travel security briefings</li>
+            <li>Threat intelligence &amp; open-source monitoring</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================== -->
+  <!-- ABOUT                                                   -->
+  <!-- ====================================================== -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+
+        <div class="about-visual reveal">
+          <div class="about-portrait">
+            <div class="portrait-bg-icon">👤</div>
+            <div class="portrait-overlay">
+              <span class="port-badge">CPP Certified</span>
+              <span class="port-badge">Army Veteran</span>
+              <br>
+              <span class="port-badge">18+ Yrs Experience</span>
+              <span class="port-badge">DC Metro</span>
+            </div>
+          </div>
+          <div class="about-float-card">
+            <div class="float-num">500+</div>
+            <div class="float-label">Clients Secured</div>
+          </div>
+        </div>
+
+        <div class="about-content">
+          <span class="section-label reveal">Our Founder</span>
+          <div class="divider reveal"></div>
+          <h2 class="section-title reveal">Meet Adeeb Sekander</h2>
+
+          <p class="about-bio reveal">
+            Adeeb Sekander is a decorated U.S. Army veteran who completed two tours of duty
+            overseas before channeling his military discipline and operational expertise into
+            the private security sector. With a career spanning over 18 years across federal
+            law enforcement support, corporate risk management, and personal protection, Adeeb
+            founded Sekander Security Group with a single mission: <em>to deliver military-grade
+            protection with civilian-grade professionalism</em>.
+          </p>
+
+          <p class="about-bio reveal">
+            Adeeb holds the <strong style="color:var(--gold-light)">Certified Protection Professional
+            (CPP)</strong> designation from ASIS International — the gold standard in the private
+            security industry — along with advanced training in counter-surveillance, emergency
+            medical response, and executive protection from the Executive Security International
+            (ESI) program. He has personally led security operations for high-profile corporate
+            conferences, private estates, government contractors, and international delegations
+            throughout the Washington DC Metro area.
+          </p>
+
+          <div class="quote reveal">
+            "Every client deserves to feel safe. That's not a marketing line — it's a personal
+            commitment I make before every engagement."
+            <br><br>
+            <strong>— Adeeb Sekander, Founder &amp; CEO</strong>
+          </div>
+
+          <div class="creds-grid reveal">
+            <div class="cred-item">
+              <span class="cred-ico">🎖</span>
+              <div>
+                <div class="cred-title">U.S. Army Veteran</div>
+                <div class="cred-sub">Two overseas deployments</div>
+              </div>
+            </div>
+            <div class="cred-item">
+              <span class="cred-ico">📜</span>
+              <div>
+                <div class="cred-title">ASIS CPP Certified</div>
+                <div class="cred-sub">Highest industry credential</div>
+              </div>
+            </div>
+            <div class="cred-item">
+              <span class="cred-ico">🔐</span>
+              <div>
+                <div class="cred-title">ESI Trained</div>
+                <div class="cred-sub">Executive protection specialist</div>
+              </div>
+            </div>
+            <div class="cred-item">
+              <span class="cred-ico">🏛</span>
+              <div>
+                <div class="cred-title">Tri-State Licensed</div>
+                <div class="cred-sub">MD, VA &amp; DC jurisdictions</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================== -->
+  <!-- CERTIFICATIONS STRIP                                    -->
+  <!-- ====================================================== -->
+  <div class="certs-strip">
+    <p class="certs-heading">Trusted Certifications &amp; Professional Memberships</p>
+    <div class="certs-row">
+      <div class="cert-tag reveal"><span class="cert-tag-ico">🏅</span> ASIS International Member</div>
+      <div class="cert-tag reveal"><span class="cert-tag-ico">🛡</span> CPP — Certified Protection Professional</div>
+      <div class="cert-tag reveal"><span class="cert-tag-ico">🏛</span> MD Security License #SL-2247</div>
+      <div class="cert-tag reveal"><span class="cert-tag-ico">🏛</span> VA Security License #VA-5531</div>
+      <div class="cert-tag reveal"><span class="cert-tag-ico">🎖</span> SDVOSB — Veteran-Owned Business</div>
+      <div class="cert-tag reveal"><span class="cert-tag-ico">📋</span> NASCO Member</div>
+      <div class="cert-tag reveal"><span class="cert-tag-ico">🚑</span> AED / CPR Certified</div>
+      <div class="cert-tag reveal"><span class="cert-tag-ico">🔒</span> $2M General Liability Insured</div>
+    </div>
+  </div>
+
+  <!-- ====================================================== -->
+  <!-- TESTIMONIALS                                            -->
+  <!-- ====================================================== -->
+  <section id="testimonials">
+    <div class="container">
+      <span class="section-label reveal">Client Testimonials</span>
+      <div class="divider reveal"></div>
+      <h2 class="section-title reveal">What Our Clients Say</h2>
+      <p class="section-desc reveal">
+        We measure our success by the peace of mind we deliver every single day. Here's
+        what some of our long-term partners have to say about working with Sekander Security Group.
+      </p>
+
+      <div class="testi-grid">
+
+        <div class="testi-card reveal">
+          <div class="stars">★★★★★</div>
+          <p class="testi-text">
+            "Sekander Security Group has been protecting our corporate headquarters for over
+            three years. Adeeb's team is professional, proactive, and always a step ahead of
+            potential issues. We've had zero security incidents since bringing them on.
+            Absolutely worth every penny."
+          </p>
+          <div class="testi-author">
+            <div class="author-av">MR</div>
+            <div>
+              <div class="author-name">Marcus Reynolds</div>
+              <div class="author-role">VP of Operations, Arcova Technologies — Tysons, VA</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card reveal">
+          <div class="stars">★★★★★</div>
+          <p class="testi-text">
+            "We hired Sekander Security for a 1,200-person fundraising gala in Georgetown.
+            Adeeb personally conducted a pre-event threat assessment and the execution was
+            absolutely flawless. Guests felt safe without feeling watched. We use them for
+            every event now — they're simply the best in DC."
+          </p>
+          <div class="testi-author">
+            <div class="author-av">SL</div>
+            <div>
+              <div class="author-name">Sandra Lin</div>
+              <div class="author-role">Executive Director, National Health Policy Forum — DC</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card reveal">
+          <div class="stars">★★★★★</div>
+          <p class="testi-text">
+            "After a string of break-ins in our neighborhood I brought in Adeeb for a
+            residential security audit. His recommendations were practical, thorough, and
+            didn't require me to turn my home into a fortress. I genuinely feel safer.
+            He's not just selling services — he actually cares about your protection."
+          </p>
+          <div class="testi-author">
+            <div class="author-av">DK</div>
+            <div>
+              <div class="author-name">David Kim</div>
+              <div class="author-role">Private Homeowner — McLean, VA</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card reveal">
+          <div class="stars">★★★★★</div>
+          <p class="testi-text">
+            "As a government contractor handling sensitive projects, choosing the right
+            security partner wasn't optional — it was critical. Sekander Security's
+            vulnerability assessment identified gaps our internal team had missed for years.
+            Thorough, confidential, and genuinely expert-level work."
+          </p>
+          <div class="testi-author">
+            <div class="author-av">TW</div>
+            <div>
+              <div class="author-name">Theresa Walsh</div>
+              <div class="author-role">COO, Meridian Defense Solutions — Bethesda, MD</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card reveal">
+          <div class="stars">★★★★★</div>
+          <p class="testi-text">
+            "Adeeb provided executive protection for our CEO during a six-city road show.
+            Seamless, discreet, and impeccably professional at every stop. Our CEO
+            specifically asked us to bring him back for the next trip. That's the highest
+            endorsement I can give."
+          </p>
+          <div class="testi-author">
+            <div class="author-av">JO</div>
+            <div>
+              <div class="author-name">James Okafor</div>
+              <div class="author-role">Chief of Staff, Vantage Capital Partners — DC</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card reveal">
+          <div class="stars">★★★★★</div>
+          <p class="testi-text">
+            "The CCTV system Sekander Security installed at our Rockville facility has been
+            exceptional — crisp footage, remote access, and a clean installation that didn't
+            disrupt our daily operations at all. Their tech team explained everything clearly
+            and follows up proactively. Highly recommend."
+          </p>
+          <div class="testi-author">
+            <div class="author-av">PB</div>
+            <div>
+              <div class="author-name">Patricia Bloom</div>
+              <div class="author-role">Facilities Manager, MedBridge Diagnostics — Rockville, MD</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================== -->
+  <!-- CONTACT                                                 -->
+  <!-- ====================================================== -->
+  <section id="contact">
+    <div class="container">
+      <span class="section-label reveal">Get In Touch</span>
+      <div class="divider reveal"></div>
+      <h2 class="section-title reveal">Let's Secure<br>What Matters Most</h2>
+      <p class="section-desc reveal">
+        Ready to take the first step toward comprehensive protection? Reach out today
+        for a free, no-obligation security consultation. We respond to every inquiry
+        within 2 business hours — and our emergency line is available 24/7.
+      </p>
+
+      <div class="contact-grid">
+
+        <div class="reveal">
+          <p class="contact-blurb">
+            Whether you're securing a residence, preparing for a major event, or building
+            an enterprise-wide security program from the ground up — Adeeb Sekander will
+            personally review your situation and deliver a tailored recommendation at no cost.
+          </p>
+          <div class="contact-details">
+            <div class="c-detail">
+              <div class="c-ico">📍</div>
+              <div>
+                <div class="c-label">Office Address</div>
+                <div class="c-value">1740 Rockville Pike, Suite 305<br>Rockville, MD 20852</div>
+              </div>
+            </div>
+            <div class="c-detail">
+              <div class="c-ico">📞</div>
+              <div>
+                <div class="c-label">Direct Line</div>
+                <div class="c-value">(240) 889-4471</div>
+              </div>
+            </div>
+            <div class="c-detail">
+              <div class="c-ico">✉️</div>
+              <div>
+                <div class="c-label">Email</div>
+                <div class="c-value">info@sekandersecurity.com</div>
+              </div>
+            </div>
+            <div class="c-detail">
+              <div class="c-ico">🕐</div>
+              <div>
+                <div class="c-label">Office Hours</div>
+                <div class="c-value">Mon–Fri: 8:00 am – 6:00 pm EST<br>Emergency line available 24/7</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form-wrap reveal">
+          <h3 class="form-title">Request a Free Consultation</h3>
+          <p class="form-subtitle">Complete the form below and Adeeb will personally review your inquiry within 2 business hours.</p>
+
+          <form id="contactForm" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName">First Name *</label>
+                <input type="text" id="firstName" placeholder="John" required>
+              </div>
+              <div class="form-group">
+                <label for="lastName">Last Name *</label>
+                <input type="text" id="lastName" placeholder="Smith" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" placeholder="john@company.com" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" placeholder="(555) 000-0000">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="service">Service of Interest</label>
+              <select id="service">
+                <option value="">— Select a service —</option>
+                <option>Residential Security</option>
+                <option>Commercial Security</option>
+                <option>Event Security</option>
+                <option>Security Consulting / Audit</option>
+                <option>Surveillance System Installation</option>
+                <option>Executive Protection</option>
+                <option>Other / I'm not sure yet</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Tell Us About Your Needs *</label>
+              <textarea id="message" placeholder="Briefly describe your security situation — property type, event size, current concerns, or anything else that helps us prepare a meaningful response for you." required></textarea>
+            </div>
+            <button type="submit" class="form-submit">Send My Request &rarr;</button>
+          </form>
+
+          <div class="form-success" id="formSuccess">
+            <div class="form-success-ico">✅</div>
+            <h3>Message Received!</h3>
+            <p>
+              Thank you for reaching out to Sekander Security Group. Adeeb will personally
+              review your inquiry and respond within <strong>2 business hours</strong>.
+              <br><br>
+              For urgent security matters, call us directly at <strong>(240) 889-4471</strong>
+              — we're available around the clock.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================== -->
+  <!-- FOOTER                                                  -->
+  <!-- ====================================================== -->
+  <footer>
+    <div class="footer-grid">
+
+      <div>
+        <a href="#home" class="nav-logo" style="margin-bottom:0.2rem; display:inline-flex;">
+          <div class="logo-shield">SSG</div>
+          <div class="logo-text-wrap">
+            <span class="logo-name">Sekander Security Group</span>
+            <span class="logo-sub">Protection You Can Trust</span>
+          </div>
+        </a>
+        <p class="footer-bio">
+          Veteran-owned and operated, Sekander Security Group delivers elite protection for
+          homes, businesses, and events across the Washington DC Metro area.
+          Licensed, insured, and committed to your safety 24 hours a day, 7 days a week.
+        </p>
+        <div class="socials">
+          <a href="#" class="social-btn" aria-label="LinkedIn">in</a>
+          <a href="#" class="social-btn" aria-label="Facebook">f</a>
+          <a href="#" class="social-btn" aria-label="X / Twitter">𝕏</a>
+          <a href="#" class="social-btn" aria-label="Instagram">ig</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Residential Security</a></li>
+          <li><a href="#services">Commercial Security</a></li>
+          <li><a href="#services">Event Security</a></li>
+          <li><a href="#services">Security Consulting</a></li>
+          <li><a href="#services">Surveillance Systems</a></li>
+          <li><a href="#services">Executive Protection</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About Adeeb</a></li>
+          <li><a href="#testimonials">Client Reviews</a></li>
+          <li><a href="#contact">Careers</a></li>
+          <li><a href="#contact">Press &amp; Media</a></li>
+          <li><a href="#contact">Partner With Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#">1740 Rockville Pike, Ste 305</a></li>
+          <li><a href="#">Rockville, MD 20852</a></li>
+          <li><a href="tel:+12408894471">(240) 889-4471</a></li>
+          <li><a href="mailto:info@sekandersecurity.com">info@sekandersecurity.com</a></li>
+          <li style="padding-top:0.4rem;">
+            <span style="color:var(--gold);font-size:0.75rem;">📍 Serving DC, MD &amp; VA</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Sekander Security Group LLC. All rights reserved. &nbsp;|&nbsp; MD #SL-2247 &nbsp;|&nbsp; VA #VA-5531</p>
+      <div class="footer-btm-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ====================================================== -->
+  <!-- JAVASCRIPT                                              -->
+  <!-- ====================================================== -->
+  <script>
+    // --- Navbar scroll shadow ---
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 10);
+      updateActiveLink();
+    }, { passive: true });
+
+    // --- Hamburger ---
+    const hamburger = document.getElementById('hamburger');
+    const navLinks  = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+    hamburger.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') hamburger.click();
+    });
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('open');
+      });
+    });
+
+    // --- Active link highlighting ---
+    const SECTIONS = ['home', 'services', 'about', 'testimonials', 'contact'];
+    function updateActiveLink() {
+      const scrollY = window.scrollY + 90;
+      let current = 'home';
+      SECTIONS.forEach(id => {
+        const el = document.getElementById(id);
+        if (el && el.offsetTop <= scrollY) current = id;
+      });
+      navLinks.querySelectorAll('a').forEach(a => {
+        const href = a.getAttribute('href');
+        a.classList.toggle('active', href === '#' + current && !a.classList.contains('nav-cta-link'));
+      });
+    }
+
+    // --- Scroll reveal ---
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    // --- Counter animation ---
+    function animateCount(el, target, suffix) {
+      if (target === 0 && suffix === '') return; // static "0"
+      if (suffix === '/7') return;               // static "24/7"
+      let start = null;
+      const duration = 1800;
+      function step(ts) {
+        if (!start) start = ts;
+        const p = Math.min((ts - start) / duration, 1);
+        el.textContent = Math.floor(p * target) + suffix;
+        if (p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    const statsSection = document.getElementById('heroStats');
+    let statsAnimated = false;
+    const statsObserver = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting && !statsAnimated) {
+        statsAnimated = true;
+        statsSection.querySelectorAll('.stat-num').forEach(el => {
+          const target = parseInt(el.dataset.target, 10);
+          const suffix = el.dataset.suffix;
+          animateCount(el, target, suffix);
+        });
+        statsObserver.disconnect();
+      }
+    }, { threshold: 0.6 });
+    if (statsSection) statsObserver.observe(statsSection);
+
+    // --- Contact form ---
+    const contactForm = document.getElementById('contactForm');
+    const formSuccess  = document.getElementById('formSuccess');
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const firstName = document.getElementById('firstName').value.trim();
+      const email     = document.getElementById('email').value.trim();
+      const message   = document.getElementById('message').value.trim();
+
+      if (!firstName || !email || !message) {
+        shakeMissing();
+        return;
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        document.getElementById('email').style.borderColor = 'var(--red-light)';
+        document.getElementById('email').focus();
+        return;
+      }
+      contactForm.style.display = 'none';
+      formSuccess.style.display = 'block';
+    });
+
+    function shakeMissing() {
+      ['firstName','email','message'].forEach(id => {
+        const el = document.getElementById(id);
+        if (!el.value.trim()) {
+          el.style.borderColor = 'var(--red-light)';
+          el.style.animation = 'none';
+          el.offsetHeight; // reflow
+          el.addEventListener('input', () => el.style.borderColor = '', { once: true });
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
